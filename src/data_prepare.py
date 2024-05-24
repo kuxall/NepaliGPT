@@ -15,8 +15,8 @@ def add_text_col(df):
     intro = "Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request."
     instruction = " ### Instruction: " + df["instruction"]
     input = " ### Input: " + df["input"]
-    respones = " ### Response: " + df["output"]
-    return intro + instruction + input + respones
+    response = " ### Response: " + df["output"]
+    return intro + instruction + input + response
 
 
 if __name__ == "__main__":
@@ -24,4 +24,5 @@ if __name__ == "__main__":
     result_df["text"] = result_df.apply(add_text_col, axis=1)
     result_df = result_df[["instruction", "input", "output", "text"]]
     print("Shape of final pre-processed data:", result_df.shape)
-    result_df.to_csv("datasets/finetuned_data/final_preprocessed.csv", index=False)
+    result_df.to_csv(
+        "datasets/finetuned_data/final_preprocessed.csv", index=False)
